@@ -440,7 +440,7 @@ nav {
 }
 
 .specialization-image img {
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
@@ -648,7 +648,7 @@ nav {
 }
 
 .history-image img {
-    width: 100%;
+    width: 80%;
     border-radius: 10px;
     box-shadow: var(--shadow);
 }
@@ -867,7 +867,7 @@ nav {
 }
 
 .project-img {
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 10px;
