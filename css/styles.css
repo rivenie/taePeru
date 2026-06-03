@@ -1540,13 +1540,24 @@ footer {
 
     .social-links {
         flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: wrap;        
     }
 
     /*Libro de reclamaciones*/
 
     .claims-form-container {
         padding: 25px;
+    }
+
+    .specialization-image img {
+        width: 100%;
+    }
+
+    .history-image img{
+        width: 100%;
+    }
+
+    .cert-item img {
+        height: 60px;
     }
 }
