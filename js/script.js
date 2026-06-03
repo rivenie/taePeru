@@ -48,14 +48,25 @@ document.addEventListener("click", (e) => {
 
 // Header scroll effect
 const header = document.querySelector("header");
+const topBar = document.querySelector(".top-bar");
+let headerFixed = false;
 
 window.addEventListener("scroll", () => {
-  if (header) {
-    if (window.scrollY > 100) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+  if (!topBar || !header) return;
+
+  const topBarHeight = topBar.offsetHeight;
+  const scrollPosition = window.scrollY;
+
+  if (scrollPosition > topBarHeight && !headerFixed) {
+    // Cuando el scroll pasa el top bar, fijar el header
+    header.classList.add("header-fixed");
+    document.body.classList.add("has-fixed-header");
+    headerFixed = true;
+  } else if (scrollPosition <= topBarHeight && headerFixed) {
+    // Cuando vuelve arriba, quitar fixed
+    header.classList.remove("header-fixed");
+    document.body.classList.remove("has-fixed-header");
+    headerFixed = false;
   }
 });
 
