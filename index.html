@@ -184,6 +184,16 @@
                 <span>Proyectos seguros y eficientes</span>
               </div>
             </div>
+            <!-- Botón BROCHURE -->
+            <div class="brochure-button">
+              <a
+                href="download/BRO_TAE.pdf"
+                class="btn-brochure"
+                target="_blank"
+              >
+                BROCHURE <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
           </div>
           <div class="specialization-image">
             <img
@@ -249,12 +259,104 @@
         <div class="cert-grid">
           <div class="cert-item">
             <span>CERTIFICADA CON</span>
-            <img src="logo/logo10.png" alt="Certificada" />
+            <div class="cert-logos">
+              <img src="logo/logo10.png" alt="Certificada" />
+              <img src="logo/logo12.png" alt="Certificada 2" />
+            </div>
           </div>
           <div class="cert-item">
             <span>HOMOLOGADOS CON</span>
             <img src="logo/logo11.png" alt="Homologados" />
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Libro de Reclamaciones -->
+    <section class="claims-section">
+      <div class="container">
+        <h2 class="section-title">Libro de Reclamaciones</h2>
+        <div class="claims-form-container">
+          <form
+            action="https://formsubmit.co/tu-correo@empresa.com"
+            method="POST"
+            class="claims-form"
+          >
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Nuevo reclamo - TAE PERÚ"
+            />
+            <input
+              type="hidden"
+              name="_next"
+              value="https://tuweb.com/gracias-reclamo.html"
+            />
+
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="nombre"
+                  placeholder="Nombres y apellidos"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="documento"
+                  placeholder="DNI / RUC"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="tel"
+                  name="telefono"
+                  placeholder="Teléfono / Celular"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Correo electrónico"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <select name="tipo" required>
+                <option value="">Tipo de consulta</option>
+                <option>Reclamo</option>
+                <option>Queja</option>
+                <option>Sugerencia</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="pedido"
+                placeholder="Número de pedido / servicio (opcional)"
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                name="detalle"
+                rows="5"
+                placeholder="Detalle de tu reclamo o queja..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Enviar reclamo
+            </button>
+          </form>
         </div>
       </div>
     </section>

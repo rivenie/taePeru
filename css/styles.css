@@ -423,6 +423,41 @@ nav {
     margin-top: 25px;
 }
 
+.brochure-button {
+    margin-top: 30px;
+}
+
+.btn-brochure {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-brochure i {
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-brochure:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.btn-brochure:hover i {
+    transform: translateX(5px);
+}
+
 .feature {
     display: flex;
     align-items: center;
@@ -622,6 +657,19 @@ nav {
     font-weight: 600;
     /*color: var(--primary-color);*/
     margin-bottom: 20px;
+}
+
+.cert-logos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.cert-logos img {
+    width: auto;
+    object-fit: contain;
 }
 
 /* History Section */
@@ -1002,6 +1050,7 @@ footer {
     background: #000;
     color: var(--white);
     padding: 60px 0 20px;
+    margin-top: 50px;
 }
 
 .footer-content {
@@ -1018,7 +1067,7 @@ footer {
 }
 
 .footer-logo span span {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .footer-links h4,
@@ -1027,7 +1076,7 @@ footer {
 .footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .footer-links ul {
@@ -1060,13 +1109,13 @@ footer {
 
 .footer-contact i,
 .footer-address i {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .footer-social h4 {
     font-size: 1.2rem;
     margin-bottom: 20px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .social-links {
@@ -1087,6 +1136,7 @@ footer {
 .social-links a i {
     font-size: 1.2rem;
     width: 25px;
+    color: var(--primary-color);
 }
 
 .social-links a:hover {
@@ -1191,6 +1241,14 @@ footer {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.claims-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -1333,6 +1391,15 @@ footer {
         max-height: 60px;
     }
 
+    .cert-logos {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .cert-logos img {
+        height: 60px;
+    }
+
     .carousel-btn {
         width: 35px;
         height: 35px;
@@ -1453,5 +1520,11 @@ footer {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    /*Libro de reclamaciones*/
+
+    .claims-form-container {
+        padding: 25px;
     }
 }
