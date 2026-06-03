@@ -147,75 +147,97 @@ if (modal) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    const track = document.querySelector(".carousel-track");
-    const slides = document.querySelectorAll(".carousel-slide");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-    const dotsContainer = document.querySelector(".carousel-dots");
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".carousel-slide");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+  const dotsContainer = document.querySelector(".carousel-dots");
 
-    if (!track || slides.length === 0) return;
+  if (!track || slides.length === 0) return;
 
-    let currentIndex = 0;
-    let autoSlideInterval;
+  let currentIndex = 0;
+  let autoSlideInterval;
 
-    function updateCarousel() {
-        const slideWidth = slides[0].offsetWidth;
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-        
-        document.querySelectorAll(".dot").forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentIndex);
-        });
-    }
+  function updateCarousel() {
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateCarousel();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateCarousel();
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(nextSlide, 4000);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    for (let i = 0; i < slides.length; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => {
-            currentIndex = i;
-            updateCarousel();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-        dotsContainer.appendChild(dot);
-    }
-
-    prevBtn?.addEventListener("click", () => {
-        prevSlide();
-        stopAutoSlide();
-        startAutoSlide();
+    document.querySelectorAll(".dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentIndex);
     });
+  }
 
-    nextBtn?.addEventListener("click", () => {
-        nextSlide();
-        stopAutoSlide();
-        startAutoSlide();
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(nextSlide, 4000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      currentIndex = i;
+      updateCarousel();
+      stopAutoSlide();
+      startAutoSlide();
     });
+    dotsContainer.appendChild(dot);
+  }
 
+  prevBtn?.addEventListener("click", () => {
+    prevSlide();
+    stopAutoSlide();
     startAutoSlide();
+  });
 
-    const carouselContainer = document.querySelector(".carousel-container");
-    carouselContainer?.addEventListener("mouseenter", stopAutoSlide);
-    carouselContainer?.addEventListener("mouseleave", startAutoSlide);
+  nextBtn?.addEventListener("click", () => {
+    nextSlide();
+    stopAutoSlide();
+    startAutoSlide();
+  });
 
-    window.addEventListener("resize", updateCarousel);
+  startAutoSlide();
+
+  const carouselContainer = document.querySelector(".carousel-container");
+  carouselContainer?.addEventListener("mouseenter", stopAutoSlide);
+  carouselContainer?.addEventListener("mouseleave", startAutoSlide);
+
+  window.addEventListener("resize", updateCarousel);
 });
+
+// Desplegable del Libro de Reclamaciones
+const claimsTrigger = document.getElementById("claims-trigger");
+const claimsSection = document.getElementById("claims-section");
+
+if (claimsTrigger && claimsSection) {
+  claimsTrigger.addEventListener("click", function (e) {
+    e.preventDefault();
+    claimsSection.classList.toggle("show");
+
+    // Cambiar texto del enlace (opcional)
+    if (claimsSection.classList.contains("show")) {
+      claimsTrigger.innerHTML = "📋 Cerrar Libro de Reclamaciones";
+      // Scroll suave hacia el formulario
+      setTimeout(() => {
+        claimsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    } else {
+      claimsTrigger.innerHTML = "📋 Libro de Reclamaciones";
+    }
+  });
+}

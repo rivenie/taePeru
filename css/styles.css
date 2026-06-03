@@ -1250,6 +1250,28 @@ footer {
     box-shadow: var(--shadow);
 }
 
+.claims-section {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.3s ease, margin 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+.claims-section.show {
+    max-height: 2000px;
+    opacity: 1;
+    margin: 40px 0;
+    padding: 40px 0;
+    visibility: visible;
+}
+
+.claims-section .container {
+    padding: 0 20px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .top-bar-content {
