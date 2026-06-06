@@ -252,3 +252,54 @@ if (claimsTrigger && claimsSection) {
     }
   });
 }
+
+// Validación en tiempo real para campos numéricos
+const dniInput = document.querySelector('input[name="documento"]');
+const telefonoInput = document.querySelector('input[name="telefono"]');
+
+if (dniInput) {
+  dniInput.addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  });
+}
+
+if (telefonoInput) {
+  telefonoInput.addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^0-9]/g, "");
+  });
+}
+
+// Validación para nombres (solo letras y espacios)
+const nombreInput = document.querySelector('input[name="nombre"]');
+if (nombreInput) {
+  nombreInput.addEventListener("input", function (e) {
+    this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúñÑ\s]/g, "");
+  });
+}
+
+// Validación de longitudes al enviar el formulario
+const claimsForm = document.querySelector(".claims-form");
+
+if (claimsForm) {
+  claimsForm.addEventListener("submit", function (e) {
+    const documento = document.querySelector('input[name="documento"]');
+    const telefono = document.querySelector('input[name="telefono"]');
+    let error = false;
+
+    if (documento && documento.value.length < 8) {
+      alert("El DNI / RUC debe tener al menos 8 números");
+      documento.focus();
+      error = true;
+    }
+
+    if (telefono && telefono.value.length !== 9) {
+      alert("El teléfono debe tener exactamente 9 números");
+      telefono.focus();
+      error = true;
+    }
+
+    if (error) {
+      e.preventDefault();
+    }
+  });
+}

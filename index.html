@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <!-- Franja superior -->
@@ -260,13 +261,15 @@
           <div class="cert-item">
             <span>CERTIFICADA CON</span>
             <div class="cert-logos">
-              <img src="logo/logo10.png" alt="Certificada" />
-              <img src="logo/logo12.png" alt="Certificada 2" />
+              <img src="logo/logo10.png" alt="Certificada" />              
             </div>
           </div>
           <div class="cert-item">
             <span>HOMOLOGADOS CON</span>
-            <img src="logo/logo11.png" alt="Homologados" />
+            <div class="cert-logos">
+              <img src="logo/logo11.png" alt="Homologada" />
+              <img src="logo/logo13.png" alt="Homologada 2" />
+            </div>
           </div>
         </div>
       </div>
@@ -282,7 +285,7 @@
             method="POST"
             class="claims-form"
           >
-            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_captcha" value="true" />
             <input
               type="hidden"
               name="_subject"
@@ -300,6 +303,8 @@
                   type="text"
                   name="nombre"
                   placeholder="Nombres y apellidos"
+                  pattern="[A-Za-zÁÉÍÓÚáéíóúñÑ\s]+"
+                  title="Solo se permiten letras"
                   required
                 />
               </div>
@@ -308,6 +313,10 @@
                   type="text"
                   name="documento"
                   placeholder="DNI / RUC"
+                  pattern="[0-9]+"
+                  title="Solo se permiten números"
+                  minlength="8"
+                  maxlength="11"
                   required
                 />
               </div>
@@ -318,6 +327,10 @@
                   type="tel"
                   name="telefono"
                   placeholder="Teléfono / Celular"
+                  pattern="[0-9]+"
+                  title="Solo se permiten números"
+                  minlength="9"
+                  maxlength="9"
                   required
                 />
               </div>
