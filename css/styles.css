@@ -863,8 +863,7 @@ nav {
     box-shadow: var(--shadow);
     transition: var(--transition);
     align-items: stretch;
-    overflow: hidden;
-    cursor: pointer;
+    overflow: hidden;    
 }
 
 .service-img {
@@ -878,6 +877,7 @@ nav {
     width: 200px;
     flex-shrink: 0;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .service-text {
@@ -912,6 +912,11 @@ nav {
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.service-text ul li:hover {
+    color: var(--primary-color);
 }
 
 /* Projects */

@@ -120,15 +120,13 @@ const modalImg = document.getElementById("modal-img");
 const modalTitle = document.getElementById("modal-title");
 
 if (modal) {
-  // Agregar evento de clic a cada tarjeta de servicio
-  document.querySelectorAll(".service-item").forEach((item) => {
-    item.addEventListener("click", function (e) {
-      // Prevenir que se abra si el clic fue dentro del modal (por seguridad)
-      if (e.target.closest(".modal")) return;
-
-      // Obtener imagen y título
+  // 1. Abrir modal al hacer clic en la imagen
+  document.querySelectorAll(".service-img-wrapper").forEach((wrapper) => {
+    wrapper.addEventListener("click", function (e) {
+      e.stopPropagation();
       const img = this.querySelector(".service-img");
-      const title = this.querySelector(".service-text h3");
+      const parentItem = this.closest(".service-item");
+      const title = parentItem?.querySelector(".service-text h3");
 
       if (img && title) {
         modalImg.src = img.src;
@@ -138,9 +136,26 @@ if (modal) {
     });
   });
 
-  // Cerrar modal al hacer clic fuera de la imagen
+  // 2. Abrir modal al hacer clic en los <li> con data-image
+  document.querySelectorAll(".service-text ul li[data-image]").forEach((li) => {
+    li.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const imageUrl = this.getAttribute("data-image");
+      const parentItem = this.closest(".service-item");
+      const title = parentItem?.querySelector(".service-text h3");
+
+      if (imageUrl) {
+        modalImg.src = imageUrl;
+        modalTitle.textContent = title
+          ? title.textContent + " - " + this.textContent
+          : this.textContent;
+        modal.classList.add("active");
+      }
+    });
+  });
+
+  // Cerrar modal
   modal.addEventListener("click", function (e) {
-    // Si el clic es en el modal (fondo) o en la X, cerrar
     if (e.target === modal || e.target.classList.contains("modal-close")) {
       modal.classList.remove("active");
       modalImg.src = "";
@@ -148,7 +163,6 @@ if (modal) {
     }
   });
 
-  // Cerrar modal con tecla ESC
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && modal.classList.contains("active")) {
       modal.classList.remove("active");
